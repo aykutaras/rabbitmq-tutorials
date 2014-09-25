@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AA2D9E3C-C69C-4476-910C-2C6D50CEC3CD}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{E14F43FD-E30B-4572-B102-07050AB67193}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RabbitMQSamples.Application</RootNamespace>
-    <AssemblyName>RabbitMQSamples.Application</AssemblyName>
+    <RootNamespace>RabbitMQSamples.WorkQueues.Consumer</RootNamespace>
+    <AssemblyName>RabbitMQSamples.WorkQueues.Consumer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,7 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RabbitMQ.Client">
+      <HintPath>..\..\packages\RabbitMQ.Client.3.3.5\lib\net30\RabbitMQ.Client.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,29 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Receiver.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RabbitMQSamples.HelloWorld.Consumer\RabbitMQSamples.HelloWorld.Consumer.csproj">
-      <Project>{bfdb7693-6949-4fde-85e9-74717f45505b}</Project>
-      <Name>RabbitMQSamples.HelloWorld.Consumer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RabbitMQSamples.HelloWorld.Producer\RabbitMQSamples.HelloWorld.Producer.csproj">
-      <Project>{9a3da7a6-7bc9-4dff-a51d-088425306a84}</Project>
-      <Name>RabbitMQSamples.HelloWorld.Producer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RabbitMQSamples.WorkQueues.Consumer\RabbitMQSamples.WorkQueues.Consumer.csproj">
-      <Project>{e14f43fd-e30b-4572-b102-07050ab67193}</Project>
-      <Name>RabbitMQSamples.WorkQueues.Consumer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RabbitMQSamples.WorkQueues.Producer\RabbitMQSamples.WorkQueues.Producer.csproj">
-      <Project>{62c4f017-c828-4427-9601-2224b5a3f883}</Project>
-      <Name>RabbitMQSamples.WorkQueues.Producer</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
